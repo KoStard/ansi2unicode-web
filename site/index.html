@@ -7,16 +7,8 @@
 <body>
 <input type="file" id="file-input"/>
 <script>WebAssembly.instantiateStreaming = null; // Is not properly working</script>
-<script src="ansi2unicode_web.js"></script>
+<script src="ansi2unicode-web.js"></script>
 <script>
-    var fileReader = new FileReader();
-    fileReader.onloadend = e => Rust.ansi2unicode_web
-            .then(reader=> {
-                window.alert(reader.print_result(fileReader));
-            });
-
-    var fileInputElement = document.getElementById("file-input");
-    fileInputElement.addEventListener("change", e => fileReader.readAsText(fileInputElement.files[0]));
 </script>
 </body>
 </html>
