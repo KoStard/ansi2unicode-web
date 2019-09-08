@@ -1,14 +1,35 @@
 <!doctype html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <title>Read to wasm</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Secure ANSI to Unicode Converter</title>
 </head>
+
 <body>
-<input type="file" id="file-input"/>
-<script>WebAssembly.instantiateStreaming = null; // Is not properly working</script>
-<script src="ansi2unicode-web.js"></script>
-<script>
-</script>
+  <div class="container_box">
+    <div id="info">
+      <h4>Convert files containing ANSI text to Unicode.</h4>
+      <ul>
+        <li>docx</li>
+        <li>pptx</li>
+        <li>txt</li>
+      </ul>
+      <div>
+        Example: <span>´µµ¶·</span> -> <span>ԲբբԳգ</span>
+      </div>
+    </div>
+    <div id="box">
+      <input type="file" class="inner" id="file-input">
+      </input>
+    </div>
+  </div>
+  <script>WebAssembly.instantiateStreaming = null; var processFile;</script>
+  <script src="ansi2unicode-web.js"></script>
+  <script src="main.js"></script>
 </body>
+
 </html>

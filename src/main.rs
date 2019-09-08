@@ -99,14 +99,21 @@ fn main() {
     stdweb::initialize();
 
     js!{
-        document.getElementById("file-input")
-            .addEventListener("change",
-                function(e) {
-                    let reader = new FileReader();
-                    reader.onloadend = () => console.log(@{get_file}(e.target.files[0].name, reader));
-                    reader.readAsArrayBuffer(e.target.files[0]);
-                }
-            );
+        processFile = function(file) {
+            let reader = new FileReader();
+            let pr = new Promise(function(resolve) {
+                reader.onloadend = () => {
+                    let resp = @{get_file}(file.name, reader);
+                    if (resp == "Empty" || resp == "Not a text") {
+                        resolve(false);
+                    } else {
+                        resolve(true);
+                    }
+                };
+            });
+            reader.readAsArrayBuffer(file);
+            return pr;
+        }
     }
 
     stdweb::event_loop();
