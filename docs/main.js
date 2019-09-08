@@ -14,10 +14,17 @@
                     setTimeout(resolve, 250);
                 });
             }
+            box.classList.remove('drag-drop');
             let initialValue = boxInner.value;
-            await processFile(boxInner.files[0]);
+            let resp = await processFile(boxInner.files[0]);
             if (boxInner.value == initialValue) {
                 boxInner.value = null;
+            }
+            if (!resp) {
+                box.classList.add('invalid');
+                setTimeout(() => {
+                    box.classList.remove('invalid');
+                }, 500);
             }
         }
     }

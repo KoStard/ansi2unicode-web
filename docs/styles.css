@@ -26,6 +26,10 @@ body {
   transition: background-color 0.2s;
 }
 
+#box.invalid {
+  background: rgba(255, 0, 0, 0.2);
+}
+
 #box .inner {
   color: transparent;
   border-radius: 10px;

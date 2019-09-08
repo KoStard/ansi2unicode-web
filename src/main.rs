@@ -104,7 +104,7 @@ fn main() {
             let pr = new Promise(function(resolve) {
                 reader.onloadend = () => {
                     let resp = @{get_file}(file.name, reader);
-                    if (resp == "Empty" || resp == "Not a text") {
+                    if (resp != "Done") {
                         resolve(false);
                     } else {
                         resolve(true);
