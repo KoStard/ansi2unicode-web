@@ -1,0 +1,1 @@
+source ~/emsdk-portable/emsdk_env.sh;emcc "-s" "ASSERTIONS=1" "-s"  "TOTAL_MEMORY=52428800" $@

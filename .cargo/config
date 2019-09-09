@@ -1,0 +1,5 @@
+[target.wasm32-unknown-emscripten]
+linker = ".cargo/emcc_sdl"
+
+[target.asmjs-unknown-emscripten]
+linker = ".cargo/emcc_sdl"

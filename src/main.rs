@@ -84,7 +84,7 @@ fn get_file(name: String, file_reader: FileReader) -> String {
                                 Err(e) => String::from(format!("Could not translate, {:?}!", e))
                             }
                         },
-                        _ => String::from(format!("Unknown type!"))
+                        _ => String::from("Unknown type!")
                     }
 
                 },
@@ -104,6 +104,7 @@ fn main() {
             let pr = new Promise(function(resolve) {
                 reader.onloadend = () => {
                     let resp = @{get_file}(file.name, reader);
+                    console.log("resp",resp, file.name, reader.result);
                     if (resp != "Done") {
                         resolve(false);
                     } else {
