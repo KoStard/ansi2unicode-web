@@ -103,11 +103,12 @@ fn main() {
             let reader = new FileReader();
             let pr = new Promise(function(resolve) {
                 reader.onloadend = () => {
+                    let t = new Date();
                     let resp = @{get_file}(file.name, reader);
-                    console.log("resp",resp, file.name, reader.result);
                     if (resp != "Done") {
                         resolve(false);
                     } else {
+                        console.log("Finished in " + (new Date() - t) + "ms.");
                         resolve(true);
                     }
                 };
