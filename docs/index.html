@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="utf-8">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css">
   <link rel="stylesheet" href="styles.css">
   <title>Secure ANSI to Unicode Converter</title>
@@ -23,12 +24,28 @@
       </div>
     </div>
     <div id="box">
-      <input type="file" class="inner" id="file-input">
-      </input>
+      <div class="inner" id="input-container">
+        <span id="input-message">Drag & drop file or click here to select one.</span>
+        <input type="file" id="file-input">
+        </input>
+      </div>
     </div>
+    <footer>
+      <div>
+        <span class="offline-status-message">
+          The app is available OFFLINE!
+        </span>
+      </div>
+      <span class="created-by-message">
+        Created by: <a href="https://github.com/KoStard">Ruben Kostandyan</a>
+      </span>
+    </footer>
+  </div>
+  <div id="update_notifier">
+    <button class="update">A new version is available, press here to reload and update!</button>
   </div>
   <script>
-    WebAssembly.instantiateStreaming = null; 
+    WebAssembly.instantiateStreaming = null;
     var processFile;
     // var Module = {
     //   TOTAL_MEMORY: 83886080,
