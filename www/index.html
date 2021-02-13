@@ -1,0 +1,47 @@
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css">
+  <link rel="stylesheet" href="styles.css">
+  <title>Secure ANSI to Unicode Converter</title>
+</head>
+
+<body>
+  <div class="container_box">
+    <div id="info">
+      <h4>Convert files containing ANSI text to Unicode.</h4>
+      <ul>
+        <li>docx</li>
+        <li>pptx</li>
+        <li>txt</li>
+      </ul>
+      <div>
+        Example: <span>´µµ¶·</span> -> <span>ԲբբԳգ</span>
+      </div>
+    </div>
+    <div id="box">
+      <div class="inner" id="input-container">
+        <span id="input-message">Drag & drop file or click here to select one.</span>
+        <input type="file" id="file-input" accept=".docx,.pptx,.txt">
+        </input>
+      </div>
+    </div>
+    <footer>
+      <div>
+        <span class="offline-status-message">
+          The app is available OFFLINE!
+        </span>
+      </div>
+      <span class="created-by-message">
+        Created by: <a href="https://github.com/KoStard">Ruben Kostandyan</a>
+      </span>
+    </footer>
+  </div>
+  <div id="update_notifier">
+    <button class="update">A new version is available, press here to reload and update!</button>
+  </div>
+  <script src="./bootstrap.js"></script>
+</body>
+
+</html>

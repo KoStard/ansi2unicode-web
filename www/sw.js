@@ -1,4 +1,4 @@
-const VERSION = 'v0.0.4';
+const VERSION = 'v0.0.3';
 const LOCAL = true; // This has to be true to run on localhost
 const BASEPATH = self.registration.scope;
 
@@ -26,7 +26,7 @@ self.addEventListener('install', function (event) {
 self.addEventListener('activate', function (event) {
   event.waitUntil(caches.keys().then((keyList) => {
     return Promise.all(keyList.map((key) => {
-      if (key < VERSION) {
+      if (key != VERSION) {
         return caches.delete(key);
       }
     }));
