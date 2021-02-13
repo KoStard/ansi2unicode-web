@@ -73,13 +73,34 @@ function setupSW() {
         // Adding service worker - will allow the app to run and load in offline mode
         // Show in the DOM that the program can run in offline mode
         let base = document.location.pathname.split('/')[1];
+        if (base) {
+            // Required to run on localhost too
+            base = `/${base}`;
+        }
 
-        navigator.serviceWorker.register(`/${base}/sw.js`, { scope: `/${base}/` }).then(function (reg) {
-
+        navigator.serviceWorker.register(`${base}/sw.js`, { scope: `${base}/` }).then(function (reg) {
             if (reg.installing) {
                 console.log('Service worker installing');
             } else if (reg.waiting) {
-                console.log('Service worker installed');
+                if (reg.active) {
+                    console.log("We have two versions available, one waiting");
+                    newWorker = reg.waiting;
+                    if (newWorker.state == 'installed') {
+                        if (navigator.serviceWorker.controller) {
+                            updateNotifier.classList.add('show');
+                        }
+                    } else {
+                        newWorker.addEventListener('statechange', function () {
+                            if (newWorker.state == 'installed') {
+                                if (navigator.serviceWorker.controller) {
+                                    updateNotifier.classList.add('show');
+                                }
+                            }
+                        });
+                    }
+                } else {
+                    console.log('Service worker installed');
+                }
             } else if (reg.active) {
                 console.log('Service worker active');
             }
