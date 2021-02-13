@@ -1,10 +1,11 @@
-const VERSION = 'v0.0.3.1';
+const VERSION = 'v0.0.3.2';
 const LOCAL = true; // This has to be true to run on localhost
 const BASEPATH = self.registration.scope;
 
 self.addEventListener('install', function (event) {
   event.waitUntil(
     caches.open(VERSION).then(function (cache) {
+      // After updates, this has to be updated too, otherwise the new instances of SW won't be applied
       return cache.addAll([
         BASEPATH,
         BASEPATH + 'index.html',

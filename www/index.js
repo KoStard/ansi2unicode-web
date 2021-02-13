@@ -12,6 +12,7 @@ function updateOfflineAccessibilityMessageStatus(accessible = true) {
 }
 
 function setupDOMEvents() {
+    console.log("Setting up DOM listeners");
     updateNotifier = document.getElementById('update_notifier');
 
     updateNotifier.querySelector('.update').addEventListener('click', function () {
@@ -31,6 +32,7 @@ function setupDOMEvents() {
         box.classList.remove('drag-drop');
     }
     fileInput.onchange = async function (event) {
+        console.log("File change detected");
         if (fileInput.files[0]) {
             box.classList.remove('drag-drop');
             let initialValue = fileInput.value;
@@ -70,7 +72,7 @@ function setupSW() {
         // Adding service worker - will allow the app to run and load in offline mode
         // Show in the DOM that the program can run in offline mode
         let base = document.location.pathname.split('/')[1];
-        
+
         navigator.serviceWorker.register(`/${base}/sw.js`, { scope: `/${base}/` }).then(function (reg) {
 
             if (reg.installing) {
@@ -109,11 +111,19 @@ function setupSW() {
         })
     }
 }
-
-window.onload = function () {
+let navData = window.performance.getEntriesByType("navigation");
+if (navData.length > 0 && navData[0].loadEventEnd > 0) {
+    console.log('Document is loaded');
     setupDOMEvents();
     setupSW();
+} else {
+    console.log('Document is not loaded');
+    window.addEventListener("load", function () {
+        setupDOMEvents();
+        setupSW();
+    });
 }
+
 
 
 function save_zip(name, value) {
