@@ -43,6 +43,7 @@ function setupDOMEvents() {
                 reader.onloadend = () => {
                     let t = new Date();
                     window.freader = reader;
+                    console.log(`Converting file ${file.name}`);
                     resp = wasm.convert_file(file.name, new Uint8Array(reader.result));
                     if (resp != "Done") {
                         resolve(false);
@@ -111,8 +112,9 @@ function setupSW() {
         })
     }
 }
-let navData = window.performance.getEntriesByType("navigation");
-if (navData.length > 0 && navData[0].loadEventEnd > 0) {
+
+
+if (document.readyState == 'complete') {
     console.log('Document is loaded');
     setupDOMEvents();
     setupSW();
@@ -123,7 +125,6 @@ if (navData.length > 0 && navData[0].loadEventEnd > 0) {
         setupSW();
     });
 }
-
 
 
 function save_zip(name, value) {

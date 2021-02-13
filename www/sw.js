@@ -1,4 +1,4 @@
-const VERSION = 'v0.0.3.2';
+const VERSION = 'v0.0.3.3';
 const LOCAL = true; // This has to be true to run on localhost
 const BASEPATH = self.registration.scope;
 
