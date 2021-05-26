@@ -1,4 +1,4 @@
-const VERSION = 'v0.0.3.4';
+const VERSION = 'v0.0.3.5';
 const LOCAL = true; // This has to be true to run on localhost
 const BASEPATH = self.registration.scope;
 
@@ -12,7 +12,7 @@ self.addEventListener('install', function (event) {
         BASEPATH + 'styles.css',
         BASEPATH + '0.bootstrap.js',
         BASEPATH + 'bootstrap.js',
-        BASEPATH + 'eca2e00ec5e7eb817c2a.module.wasm',
+        BASEPATH + 'a357f78d05ea67274287.module.wasm',
         'https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css',
         'https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/fira_code.css',
         'https://cdn.jsdelivr.net/gh/tonsky/FiraCode@1.207/distr/woff2/FiraCode-Bold.woff2',

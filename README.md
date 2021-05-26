@@ -6,3 +6,13 @@ Using ansi2unicode-rs with WASM and publishing it with github pages.
 - It is using rust with WASM, so it is very fast!
 
 You can access the website with this link - https://kostard.github.io/ansi2unicode-web/
+
+## Development
+### Building the package
+- Install node, npm
+- Install wasm-pack
+- `wasm-pack`
+- `cd www/`
+- `npm install`
+- `npm run-script build` - you will get everything you need inside the docs folder
+- Before pushing, update the `www/sw.js` file with the new name of the wasm file and run `npm run-script build` again

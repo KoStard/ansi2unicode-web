@@ -39,7 +39,7 @@ function setupDOMEvents() {
             let file = fileInput.files[0]
             let reader = new FileReader();
             let resp;
-            let pr = new Promise(function (resolve) {
+            let processingPromise = new Promise(function (resolve) {
                 reader.onloadend = () => {
                     let t = new Date();
                     window.freader = reader;
@@ -54,7 +54,7 @@ function setupDOMEvents() {
                 };
             });
             reader.readAsArrayBuffer(file);
-            await pr;
+            await processingPromise;
             if (fileInput.value == initialValue) {
                 fileInput.value = null;
             }
